@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap' );
+
+:root {
+    --baby-pink: #FADADD;
+    --burgundy: #800020;
+    --burgundy-light: #a3153b;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: #fdf2f5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    position: relative;
+}
+
+/* الأشكال المتحركة في الخلفية (هذا اللي ببين الشغل متعوب عليه) */
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+    animation: float 10s infinite ease-in-out alternate;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(250, 218, 221, 0.8); /* Baby Pink */
+    top: -100px;
+    left: -100px;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(128, 0, 32, 0.15); /* Burgundy Light */
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 50px) scale(1.1); }
+}
+
+/* بطاقة الزجاج البلوري (Glassmorphism) */
+.premium-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(128, 0, 32, 0.1);
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 420px;
+    z-index: 1;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* اللوجو */
+.brand-logo {
+    color: var(--burgundy);
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+}
+
+.brand-logo span {
+    color: #e84371;
+}
+
+/* تصميم الحقول مع الأيقونات */
+.input-group-custom {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group-custom i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--burgundy);
+    opacity: 0.6;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+/* تعديل مكان الأيقونة حسب اللغة (عربي/إنجليزي) */
+html[dir="rtl"] .input-group-custom i { right: 20px; }
+html[dir="ltr"] .input-group-custom i { left: 20px; }
+
+html[dir="rtl"] .premium-input { padding: 16px 50px 16px 20px; }
+html[dir="ltr"] .premium-input { padding: 16px 20px 16px 50px; }
+
+.premium-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid transparent;
+    border-radius: 18px;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.premium-input:focus {
+    background: #fff;
+    border-color: var(--burgundy-light);
+    box-shadow: 0 0 0 4px rgba(128, 0, 32, 0.1);
+    outline: none;
+}
+
+.premium-input:focus + i, .input-group-custom:focus-within i {
+    opacity: 1;
+    color: var(--burgundy);
+}
+
+/* الزر الفخم */
+.premium-btn {
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-light) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 18px;
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    width: 100%;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 10px 20px rgba(128, 0, 32, 0.25);
+}
+
+.premium-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(128, 0, 32, 0.4);
+}
+
+/* زر اللغة */
+.lang-toggle {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    color: var(--burgundy);
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.lang-toggle:hover {
+    background: var(--burgundy);
+    color: var(--white);
+    transform: translateY(-2px);
+}
